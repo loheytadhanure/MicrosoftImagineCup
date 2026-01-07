@@ -1,0 +1,267 @@
+/* CarePath Design System - Medical-grade, calm, accessible */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Warm, calm background palette */
+    --background: 40 30% 98%;
+    --foreground: 220 20% 20%;
+
+    /* Cards - slightly warmer than background */
+    --card: 40 40% 99%;
+    --card-foreground: 220 20% 20%;
+
+    /* Popover */
+    --popover: 40 40% 99%;
+    --popover-foreground: 220 20% 20%;
+
+    /* Primary - Healing sage/teal */
+    --primary: 160 35% 45%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 160 35% 92%;
+    --primary-muted: 160 25% 75%;
+
+    /* Secondary - Soft warm gray */
+    --secondary: 40 15% 94%;
+    --secondary-foreground: 220 20% 30%;
+
+    /* Muted surfaces */
+    --muted: 40 15% 94%;
+    --muted-foreground: 220 10% 50%;
+
+    /* Accent - Gentle coral for actions */
+    --accent: 15 70% 60%;
+    --accent-foreground: 0 0% 100%;
+    --accent-light: 15 70% 95%;
+
+    /* Status colors - calm, not alarming */
+    --success: 150 45% 50%;
+    --success-light: 150 45% 92%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 35 85% 55%;
+    --warning-light: 35 85% 92%;
+    --warning-foreground: 35 85% 20%;
+
+    --info: 200 70% 55%;
+    --info-light: 200 70% 92%;
+    --info-foreground: 0 0% 100%;
+
+    /* Destructive - Soft, not alarming */
+    --destructive: 0 50% 55%;
+    --destructive-light: 0 50% 95%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Border & Input */
+    --border: 40 20% 90%;
+    --input: 40 20% 90%;
+    --ring: 160 35% 45%;
+
+    --radius: 0.75rem;
+
+    /* Sidebar */
+    --sidebar-background: 160 20% 97%;
+    --sidebar-foreground: 220 20% 30%;
+    --sidebar-primary: 160 35% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 160 25% 92%;
+    --sidebar-accent-foreground: 220 20% 20%;
+    --sidebar-border: 160 15% 90%;
+    --sidebar-ring: 160 35% 45%;
+
+    /* Custom CarePath tokens */
+    --care-surface: 40 30% 97%;
+    --care-divider: 40 15% 92%;
+    --care-highlight: 160 40% 94%;
+    --care-text-soft: 220 10% 55%;
+    --care-badge-done: 150 45% 50%;
+    --care-badge-missed: 0 50% 55%;
+    --care-badge-pending: 35 85% 55%;
+  }
+
+  .dark {
+    --background: 220 25% 10%;
+    --foreground: 40 20% 95%;
+
+    --card: 220 25% 12%;
+    --card-foreground: 40 20% 95%;
+
+    --popover: 220 25% 12%;
+    --popover-foreground: 40 20% 95%;
+
+    --primary: 160 40% 55%;
+    --primary-foreground: 220 25% 10%;
+    --primary-light: 160 30% 20%;
+    --primary-muted: 160 25% 35%;
+
+    --secondary: 220 20% 18%;
+    --secondary-foreground: 40 20% 90%;
+
+    --muted: 220 20% 18%;
+    --muted-foreground: 220 10% 60%;
+
+    --accent: 15 60% 55%;
+    --accent-foreground: 0 0% 100%;
+    --accent-light: 15 40% 20%;
+
+    --success: 150 45% 45%;
+    --success-light: 150 30% 18%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 35 75% 50%;
+    --warning-light: 35 50% 18%;
+    --warning-foreground: 35 85% 95%;
+
+    --info: 200 60% 50%;
+    --info-light: 200 40% 18%;
+    --info-foreground: 0 0% 100%;
+
+    --destructive: 0 45% 50%;
+    --destructive-light: 0 35% 18%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 20% 20%;
+    --input: 220 20% 20%;
+    --ring: 160 40% 55%;
+
+    --sidebar-background: 220 25% 8%;
+    --sidebar-foreground: 40 20% 90%;
+    --sidebar-primary: 160 40% 55%;
+    --sidebar-primary-foreground: 220 25% 10%;
+    --sidebar-accent: 220 20% 15%;
+    --sidebar-accent-foreground: 40 20% 90%;
+    --sidebar-border: 220 20% 18%;
+    --sidebar-ring: 160 40% 55%;
+
+    --care-surface: 220 25% 14%;
+    --care-divider: 220 20% 22%;
+    --care-highlight: 160 30% 18%;
+    --care-text-soft: 220 10% 60%;
+    --care-badge-done: 150 45% 45%;
+    --care-badge-missed: 0 45% 50%;
+    --care-badge-pending: 35 75% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', 'DM Sans', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'DM Sans', 'Inter', system-ui, sans-serif;
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  /* Care Card Variants */
+  .care-card {
+    @apply bg-card rounded-xl border border-border p-5 shadow-sm transition-all duration-200;
+  }
+
+  .care-card-interactive {
+    @apply care-card hover:shadow-md hover:border-primary/20 cursor-pointer;
+  }
+
+  .care-card-highlight {
+    @apply care-card bg-care-highlight border-primary/20;
+  }
+
+  /* Status badges */
+  .care-badge {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium transition-colors;
+  }
+
+  .care-badge-done {
+    @apply bg-success-light text-success;
+  }
+
+  .care-badge-missed {
+    @apply bg-destructive-light text-destructive;
+  }
+
+  .care-badge-pending {
+    @apply bg-warning-light text-warning-foreground;
+  }
+
+  .care-badge-info {
+    @apply bg-info-light text-info;
+  }
+
+  /* Disclaimer styling */
+  .care-disclaimer {
+    @apply bg-info-light border border-info/20 rounded-lg p-4 text-sm text-info-foreground/80;
+  }
+
+  /* Soft divider */
+  .care-divider {
+    @apply border-t border-care-divider my-4;
+  }
+
+  /* Action buttons */
+  .care-action-done {
+    @apply bg-success/10 text-success hover:bg-success hover:text-success-foreground border border-success/30;
+  }
+
+  .care-action-missed {
+    @apply bg-destructive/10 text-destructive hover:bg-destructive hover:text-destructive-foreground border border-destructive/30;
+  }
+
+  /* Chart placeholder */
+  .care-chart-placeholder {
+    @apply bg-gradient-to-br from-primary-light to-care-surface rounded-xl p-6 min-h-[200px] flex items-center justify-center border border-primary/10;
+  }
+
+  /* Input styling */
+  .care-input {
+    @apply bg-background border-border focus:border-primary focus:ring-2 focus:ring-primary/20 rounded-lg transition-all duration-200;
+  }
+
+  /* Smooth transitions */
+  .care-transition {
+    @apply transition-all duration-200 ease-in-out;
+  }
+}
+
+@layer utilities {
+  /* Soft shadows */
+  .shadow-care {
+    box-shadow: 0 2px 8px -2px hsl(var(--primary) / 0.08), 0 4px 16px -4px hsl(var(--foreground) / 0.05);
+  }
+
+  .shadow-care-lg {
+    box-shadow: 0 4px 12px -4px hsl(var(--primary) / 0.1), 0 8px 24px -8px hsl(var(--foreground) / 0.08);
+  }
+
+  /* Text utilities */
+  .text-care-soft {
+    color: hsl(var(--care-text-soft));
+  }
+
+  .text-care-heading {
+    @apply text-foreground font-semibold tracking-tight;
+  }
+
+  /* Background utilities */
+  .bg-care-surface {
+    background-color: hsl(var(--care-surface));
+  }
+
+  .bg-care-highlight {
+    background-color: hsl(var(--care-highlight));
+  }
+}
