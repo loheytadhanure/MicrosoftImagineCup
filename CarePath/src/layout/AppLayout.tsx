@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
-import { Home, Activity, FileText, TrendingUp, PlusCircle, User } from "lucide-react";
+import { Home, FileText, TrendingUp, PlusCircle } from "lucide-react";
+import { Header } from "./Header";
 
 type TabKey = 'today' | 'log' | 'reports' | 'trends';
 
@@ -10,7 +11,7 @@ interface AppLayoutProps {
   userName?: string;
 }
 
-export function AppLayout({ children, activeTab, onTabChange, userName = "Loheyta" }: AppLayoutProps) {
+export function AppLayout({ children, activeTab, onTabChange }: AppLayoutProps) {
   const tabs = [
     { key: 'today' as TabKey, label: 'Today', icon: Home },
     { key: 'log' as TabKey, label: 'Log', icon: PlusCircle },
@@ -20,23 +21,8 @@ export function AppLayout({ children, activeTab, onTabChange, userName = "Loheyt
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-sm border-b border-care-divider">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div>
-            <h1 className="text-xl font-display font-semibold text-foreground flex items-center gap-2">
-              <Activity className="w-6 h-6 text-primary" />
-              CarePath
-            </h1>
-          </div>
-          <div className="flex items-center gap-3">
-            <span className="text-sm text-muted-foreground hidden sm:block">Welcome, {userName}</span>
-            <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center">
-              <User className="w-5 h-5 text-primary" />
-            </div>
-          </div>
-        </div>
-      </header>
+      {/* Header with Auth */}
+      <Header />
 
       {/* Main Content */}
       <main className="container mx-auto px-4 py-6 pb-24">
